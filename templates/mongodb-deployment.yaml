@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "organic-ghee-chart.fullname" . }}-mongo
+  name: {{ include "organic-ghee-chart" . }}-mongo
   labels:
     app: {{ include "organic-ghee-chart.name" . }}-mongo
 spec:
