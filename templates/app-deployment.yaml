@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "organic-ghee-chart.fullname" . }}
+  name: {{ include "organic-ghee-chart" . }}
   labels:
     app: {{ include "organic-ghee-chart.name" . }}
 spec:
@@ -22,4 +22,4 @@ spec:
             - containerPort: {{ .Values.service.targetPort }}
           env:
             - name: MONGO_URI
-              value: "mongodb://{{ include "organic-ghee-chart.fullname" . }}-mongo:{{ .Values.mongodb.service.port }}/organic-ghee"
+              value: "mongodb://{{ include "organic-ghee-chart" . }}-mongo:{{ .Values.mongodb.service.port }}/organic-ghee"
