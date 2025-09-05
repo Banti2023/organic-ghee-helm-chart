@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "organic-ghee-chart.fullname" . }}-mongo
+  labels:
+    app: {{ include "organic-ghee-chart.name" . }}-mongo
+spec:
+  replicas: {{ .Values.mongodb.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "organic-ghee-chart.name" . }}-mongo
+  template:
+    metadata:
+      labels:
+        app: {{ include "organic-ghee-chart.name" . }}-mongo
+    spec:
+      containers:
+        - name: mongo
+          image: "{{ .Values.mongodb.image.repository }}:{{ .Values.mongodb.image.tag }}"
+          imagePullPolicy: {{ .Values.mongodb.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.mongodb.service.targetPort }}

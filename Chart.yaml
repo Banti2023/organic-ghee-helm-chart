@@ -1,0 +1,10 @@
+apiVersion: v2
+name: organic-ghee-chart
+description: A Helm chart for deploying the Organic Ghee application with MongoDB
+type: application
+
+# Chart version (bump this when you change templates or chart itself)
+version: 0.1.0
+
+# Application version (match your container image tag)
+appVersion: "latest"

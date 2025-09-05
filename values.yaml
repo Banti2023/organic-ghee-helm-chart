@@ -1,0 +1,35 @@
+replicaCount: 1
+
+image:
+  repository: banti24/organic-ghee
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 5656
+  targetPort: 5656
+  nodePort: 30081
+
+mongodb:
+  replicaCount: 1
+  image:
+    repository: mongo
+    tag: "6.0"
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 27017
+    targetPort: 27017
+
+ingress:
+  enabled: false
+  className: nginx
+  host: retail.local
+  path: /
+  pathType: Prefix
+
+config:
+  MONGODB_DATABASE: myDatabase
+  APP_ENV: production
+  APP_DEBUG: "false"
